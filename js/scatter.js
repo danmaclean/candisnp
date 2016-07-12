@@ -34,7 +34,7 @@ function bases_to_unit_bases(bases) {
 
 function get_svg_string(plots){
     // Get the d3js SVG element
-  	var xml = '<svg xmlns="http://www.w3.org/2000/svg" id="candisnp_output" width="1000" height="' + (plots.length * 300) + '" >'; //+ 
+  	var xml = '<svg xmlns="http://www.w3.org/2000/svg" id="candisnp_output" width="1000" height="' + (plots.length * 300) + '" >'; //+
     for (i = 0; i < plots.length; i++){
   	  xml = xml + (new XMLSerializer).serializeToString(plots[i]);
     }
@@ -69,7 +69,7 @@ function save_png(){
 //save the json data as a csv file
 function save_table(){
 	console.log(pageData[0]);
-	var string =  ' "Chr", "Pos", "Alt", "Ref", "Allele_Freq", "Is_CTGA", "Is_Synonymous", "In_CDS", "Change", "Effect"\n';
+	var string =  ' "Chr", "Pos", "Alt", "Ref", "Allele_Freq", "Is_CTGA", "Is_Synonymous", "In_CDS", "Change", "Effect", "Gene"\n';
 	//console.log(string);
 	for (i in pageData){
 		var snp = pageData[i];
@@ -82,7 +82,7 @@ function save_table(){
 
 function snp_to_string(snp){
 	var string = "";
-	string = string + [snp.chromosome, snp.position, snp.alternate_base, snp.reference_base, snp.allele_freq, snp.is_ctga, snp.is_synonymous, snp.in_cds, snp.change, snp.effect].join(",") + "\n";
+	string = string + [snp.chromosome, snp.position, snp.alternate_base, snp.reference_base, snp.allele_freq, snp.is_ctga, snp.is_synonymous, snp.in_cds, snp.change, snp.effect, snp.gene].join(",") + "\n";
 	return string;
 }
 
@@ -101,7 +101,7 @@ function ratio_current_chromosome_to_longest(species,chr){
 function draw(data){
   var chromosomes = get_chromosomes(data);
   var species = $('#species_select').val();
-  
+
   if (has_centromere_positions(species)){
     add_centromere_select(species);
   }
@@ -160,10 +160,10 @@ var tip = d3.tip()
 
 
   var g = svg.append("g");
-  
+
   g.attr('class', 'plot_element');
   g.attr("transform", "translate(0," + ( count * 300) +  ")");
-  
+
   g.attr("id", plot_id)
   .attr('width',width)
   .attr('height',height)
@@ -188,7 +188,7 @@ var tip = d3.tip()
     var snp_type = get_snp_type(d);
     return default_colour(snp_type);
   })
-  
+
   //add within centromere information
   if (centromere_positions){
   	g.selectAll("circle")
@@ -200,7 +200,7 @@ var tip = d3.tip()
   .attr("class","x axis")
   .attr("transform", "translate(0," + (height - margin) + " )")
   .call(x_axis);
-  
+
  g.append("text")
     .attr("class", "x label")
     .attr("x", 50)
@@ -219,12 +219,12 @@ var tip = d3.tip()
     .attr("x", "110")
     //.attr("transform", "rotate(-90)")
   .text("Allele Frequency");
-  
+
   d3.selectAll('.axis path')
   .style("fill","none")
   .style("stroke", "#000")
   .style("shape-rendering", "crispEdges");
-  
+
   d3.selectAll('.axis line')
   .style("fill","none")
   .style("stroke", "#000")
@@ -255,7 +255,7 @@ function add_centromere_listener(species){
   // now add the listener for the select box that does the hiding
   $('#hide_centromeres').change( function(){
     if (this.checked){
-      d3.selectAll(".in_centromere")  
+      d3.selectAll(".in_centromere")
       .transition()
       .duration(250)
       .style("opacity",0);
@@ -492,10 +492,10 @@ Dropzone.options.mySecondAwesomeDropzone = {
 	  canceled: function(file){
 		  $('.spinner').remove();
 	  },
-	  reset: function(file){    
+	  reset: function(file){
 		  $("svg").remove();
 		  $("#output").css("display", "none");
-	  } 
+	  }
 };
 
 function spinner_opts(){
