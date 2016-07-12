@@ -45,7 +45,7 @@
 		<p id="cite_us">
 	If you use <span style="color:#34BEDA">Candi</span><span style="color:#FFB416">SNP</span> please cite: Etherington, Monaghan <em>et al</em> "Mapping mutations in plant genomes with the user-friendly web application CandiSNP." <a href="http://www.plantmethods.com/content/10/1/306/abstract">Plant Methods 2014, 10:306. doi:10.1186/s13007-014-0041-7</a>.
 		</p>
-	
+
 	</div>
 
     <hr width=1000 align=left>
@@ -146,7 +146,7 @@
 
 	<h4>3. Upload</h4>
 	<p>Once your file is prepared click or drop your file into the 'Click to select or drop a data file to begin' area. Upload will begin and your data will be analysed. When it is done, an interactive plot will be displayed on the screen.</p>
-	
+
 	<h4>4. Control Panel</h4>
 	<p>When the plot appears, a control panel to determine it's data and appearance is also displayed, it has four sections</p>
 	<ul>
@@ -155,7 +155,7 @@
 		<li>'Hide Centromere Region SNPs' - for the genome assemblies with known centromere positions, clicking this button will hide SNPs within 0.5 Mb +/- the centromeres</li>
 		<li>'Download SVG/PNG/Annotated SNPs' - will send <span style="color:#34BEDA">Candi</span><span style="color:#FFB416">SNP</span> images or an annotated table to your computer</li>
 	</ul>
-	<h4>5. The Plot</h4> 
+	<h4>5. The Plot</h4>
 	<p>You will see a plot like this for every contig or chromosome of your chosen assembly. </p>
 	<img src="img/example_plot.png"></img>
 	<p>
@@ -182,6 +182,9 @@ $("#non_synonymous_coding_region_picker").spectrum(colour_settings("#ff0000","NO
 $("#annotated_region_picker").spectrum(colour_settings("#aaaaaa","ANNOTATED_REGION") );
 
 $("#non_annotated_region_picker").spectrum(colour_settings("#aaaaaa","NON_ANNOTATED_REGION") );
+
+$("#cds_region_picker").spectrum(colour_settings("#aaaaaa","CDS") );
+
 </script>
 
 
@@ -200,12 +203,12 @@ $("#non_annotated_region_picker").spectrum(colour_settings("#aaaaaa","NON_ANNOTA
   <script>
    $('#save_as_png').click( function(){ save_png(); });
   </script>
-   
+
    <script>
     $('#save_as_table').click( function(){ save_table(); });
    </script>
-  
-   
+
+
 
 <script>
   var ohcanada = new Audio('easter_eggs/oh_canada.mp3');

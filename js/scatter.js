@@ -324,6 +324,9 @@ function get_snp_type(d){
       else if(d.is_synonymous == 'TRUE' && d.is_ctga == "FALSE" && d.in_cds == "TRUE" ){
         return "ANNOTATED_REGION";
       }
+      else if(d.in_cds == "TRUE"){
+        return "CDS";
+      }
       else if( d.in_cds == "FALSE" ){
         return "NON_ANNOTATED_REGION";
 
@@ -349,6 +352,9 @@ function default_colour(snp_type){
         return "#ff0000";
       }
       else if (snp_type == "ANNOTATED_REGION"){
+        return "#aaaaaa";
+      }
+      else if (snp_type == "CDS"){
         return "#aaaaaa";
       }
       else{
