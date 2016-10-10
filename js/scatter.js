@@ -473,7 +473,7 @@ Dropzone.options.mySecondAwesomeDropzone = {
       maxFilesize: 200, // MB
       url: "cgi/snpeff.cgi",
       addRemoveLinks: true,
-      acceptedFiles: ["text/csv","application/vnd.ms-excel", "application/csv"],
+      acceptedFiles: "text/csv,application/vnd.ms-excel,application/csv",
       uploadprogress: true,
 	  maxFiles: 1,
       // params: {"organism": $('#species_select').val(), "file": "filename" },
